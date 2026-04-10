@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Report - NagorikHub</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .page-wrapper {
+            padding-top: 100px;
+            min-height: 100vh;
+            max-width: 1000px; /* Slightly narrower for readability */
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+            padding-bottom: 4rem;
+        }
+
+        .report-header {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .badge-premium {
+            display: inline-block;
+            background: rgba(232, 160, 32, 0.15);
+            color: var(--amber2);
+            padding: 0.3rem 0.8rem;
+            border-radius: 999px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(232, 160, 32, 0.3);
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-card {
+            background: rgba(26, 32, 53, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        .stat-card h4 {
+            color: rgba(232, 228, 220, 0.6);
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card .value {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .stat-card .trend {
+            font-size: 0.8rem;
+            color: #2dd4a4; /* Green trend */
+            margin-top: 0.25rem;
+            display: block;
+        }
+
+        /* AI Chatbot UI */
+        .chat-section {
+            margin-top: 4rem;
+            background: rgba(10, 14, 26, 0.8);
+            border: 1px solid var(--amber);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(232, 160, 32, 0.05);
+        }
+
+        .chat-header {
+            background: rgba(232, 160, 32, 0.1);
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid rgba(232, 160, 32, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .chat-header h3 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            color: var(--amber2);
+        }
+
+        .chat-window {
+            padding: 1.5rem;
+            height: 300px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .msg {
+            max-width: 80%;
+            padding: 0.85rem 1.25rem;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .msg.user {
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            align-self: flex-end;
+            border-bottom-right-radius: 2px;
+        }
+
+        .msg.ai {
+            background: rgba(26, 171, 122, 0.1);
+            border: 1px solid rgba(26, 171, 122, 0.2);
+            color: #e8e4dc;
+            align-self: flex-start;
+            border-bottom-left-radius: 2px;
+        }
+
+        .chat-input-area {
+            padding: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .chat-input-area input {
+            flex: 1;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            color: #fff;
+            font-family: var(--font-body);
+            outline: none;
+        }
+
+        .chat-input-area input:focus { border-color: var(--amber); }
+
+        .chat-input-area button {
+            background: var(--amber);
+            color: var(--ink);
+            border: none;
+            padding: 0 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a class="nav-logo" href="index.html"><span>Nagorik</span>Hub</a>
+        <ul class="nav-links">
+            <li><a href="listings.html">Explore</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+        </ul>
+        <div class="nav-actions">
+            <a href="index.html" class="btn-ghost">Logout</a>
+        </div>
+    </nav>
+
+    <div class="page-wrapper">
+        
+        <div class="report-header">
+            <span class="badge-premium">Unlocked: Deep Report</span>
+            <h1 style="font-family: var(--font-display); font-size: 2.5rem;">Luxury Condo</h1>
+            <p style="color: rgba(232,228,220,0.65); font-size: 1.1rem;">Gulshan 2, Avenue 8</p>
+        </div>
+
+        <h2 style="font-family: var(--font-display); margin-bottom: 1rem;">Intelligence Overview</h2>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h4>6-Month Rent Prediction</h4>
+                <div class="value">৳85k - ৳88k</div>
+                <span class="trend">↑ +3% Expected increase</span>
+            </div>
+            <div class="stat-card">
+                <h4>Safety Index</h4>
+                <div class="value">95 / 100</div>
+                <span class="trend" style="color: rgba(232,228,220,0.5);">Based on 42 recent reviews</span>
+            </div>
+            <div class="stat-card">
+                <h4>Tutor Confidence</h4>
+                <div class="value">92 / 100</div>
+                <span class="trend">Excellent night accessibility</span>
+            </div>
+        </div>
+
+        <h2 style="font-family: var(--font-display); margin-bottom: 1rem;">Verified Utility History</h2>
+        <div style="background: rgba(26, 32, 53, 0.5); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 1.5rem; margin-bottom: 3rem;">
+            <ul style="list-style: none; display: flex; flex-direction: column; gap: 1rem; color: rgba(232,228,220,0.8);">
+                <li style="display: flex; gap: 1rem; align-items: center;">
+                    <span style="font-size: 1.5rem;">⚡</span> 
+                    <div><strong>Electricity:</strong> 99% uptime average over the last 30 days. No scheduled DESCO load-shedding detected.</div>
+                </li>
+                <li style="display: flex; gap: 1rem; align-items: center;">
+                    <span style="font-size: 1.5rem;">🔥</span> 
+                    <div><strong>Gas:</strong> Pipeline connection confirmed active. Pressure drops reported between 8 AM - 10 AM by 2 tenants.</div>
+                </li>
+                <li style="display: flex; gap: 1rem; align-items: center;">
+                    <span style="font-size: 1.5rem;">💧</span> 
+                    <div><strong>Water:</strong> WASA connected. Backup underground reservoir verified functional.</div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="chat-section">
+            <div class="chat-header">
+                <span style="font-size: 1.2rem;">🤖</span>
+                <h3>Nagorik AI — Area Expert</h3>
+            </div>
+            
+            <div class="chat-window" id="chat-window">
+                <div class="msg ai">
+                    Hello! I have analyzed the neighborhood data and 42 verified reviews for Gulshan 2, Avenue 8. Ask me anything about safety, utilities, or the commute.
+                </div>
+                <div class="msg user">
+                    Is it safe for my tutor to leave at 9:30 PM?
+                </div>
+                <div class="msg ai">
+                    <strong>Yes, highly likely.</strong> Based on our data, Gulshan 2 has a very high nighttime Tutor Confidence Score (92/100). The specific street (Avenue 8) is well-lit, and rickshaws are frequently available near the main intersection even after 10:00 PM.
+                </div>
+            </div>
+
+            <form class="chat-input-area" id="ai-chat-form">
+                <input type="text" id="chat-input" placeholder="Ask about the neighborhood..." required>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+
+    </div>
+
+    <script>
+        document.getElementById('ai-chat-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const input = document.getElementById('chat-input');
+            const chatWindow = document.getElementById('chat-window');
+            const userText = input.value;
+            
+            // 1. Add User Message
+            const userMsg = document.createElement('div');
+            userMsg.className = 'msg user';
+            userMsg.textContent = userText;
+            chatWindow.appendChild(userMsg);
+            
+            // Clear input
+            input.value = '';
+            
+            // Scroll to bottom
+            chatWindow.scrollTop = chatWindow.scrollHeight;
+
+            // 2. Simulate AI Thinking and Responding
+            setTimeout(() => {
+                const aiMsg = document.createElement('div');
+                aiMsg.className = 'msg ai';
+                aiMsg.innerHTML = "<em>Analyzing vector embeddings for this property...</em> <br><br> Based on similar queries, the sentiment around this specific area remains overwhelmingly positive regarding your concern. Is there anything else you'd like to check?";
+                chatWindow.appendChild(aiMsg);
+                chatWindow.scrollTop = chatWindow.scrollHeight;
+            }, 1200);
+        });
+    </script>
+</body>
+</html>
