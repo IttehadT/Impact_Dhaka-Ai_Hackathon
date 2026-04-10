@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Listing - NagorikHub</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .page-wrapper {
+            padding-top: 100px;
+            min-height: 100vh;
+            max-width: 800px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+            padding-bottom: 4rem;
+        }
+
+        .form-card {
+            background: rgba(26, 32, 53, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 2.5rem;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        /* Inputs that need to span the full width of the form */
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .input-group label {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: rgba(232, 228, 220, 0.8);
+        }
+
+        .input-group input, .input-group select {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background: rgba(10, 14, 26, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 8px;
+            color: #fff;
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            outline: none;
+        }
+
+        .input-group input:focus, .input-group select:focus {
+            border-color: var(--amber);
+        }
+
+        /* Styling the dropdown select menu to fit the dark theme */
+        .input-group select option {
+            background: var(--ink2);
+            color: #fff;
+        }
+
+        .btn-submit {
+            margin-top: 2rem;
+            width: 100%;
+            justify-content: center;
+        }
+        
+        #status-message {
+            margin-top: 1rem;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a class="nav-logo" href="index.html"><span>Nagorik</span>Hub</a>
+        <ul class="nav-links">
+            <li><a href="listings.html">Explore</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+        </ul>
+        <div class="nav-actions">
+            <a href="index.html" class="btn-ghost">Logout</a>
+        </div>
+    </nav>
+
+    <div class="page-wrapper">
+        <h1 style="font-family: var(--font-display); font-size: 2.2rem; margin-bottom: 0.5rem;">Add New Listing</h1>
+        <p style="color: rgba(232,228,220,0.65); margin-bottom: 2rem;">Contribute property data to the NagorikHub intelligence network.</p>
+
+        <div class="form-card">
+            <form id="addListingForm">
+                <div class="form-grid">
+                    <div class="input-group full-width">
+                        <label for="title">Property Title</label>
+                        <input type="text" id="title" placeholder="e.g., 3BHK Corner Flat" required>
+                    </div>
+
+                    <div class="input-group full-width">
+                        <label for="location">Location / Address</label>
+                        <input type="text" id="location" placeholder="e.g., Mirpur DOHS, Avenue 3" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="rent">Monthly Rent (৳)</label>
+                        <input type="number" id="rent" placeholder="25000" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="gas_type">Gas Type</label>
+                        <select id="gas_type" required>
+                            <option value="Pipeline">Pipeline Gas</option>
+                            <option value="Cylinder">Cylinder Gas</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="water_source">Water Source</label>
+                        <input type="text" id="water_source" placeholder="e.g., WASA" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="electricity_uptime">Electricity Uptime (%)</label>
+                        <input type="number" id="electricity_uptime" placeholder="95" min="0" max="100" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="livability_score">Estimated Livability Score (1-100)</label>
+                        <input type="number" id="livability_score" placeholder="85" min="1" max="100" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="tutor_score">Estimated Tutor Score (1-100)</label>
+                        <input type="number" id="tutor_score" placeholder="80" min="1" max="100" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-large amber btn-submit">Simulate Upload</button>
+            </form>
+            
+            <div id="status-message"></div>
+
+            <a href="listings.html" class="btn-ghost" style="width: 100%; justify-content: center; margin-top: 1rem;">View All Listings →</a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('addListingForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Stop page reload
+            
+            const statusMessage = document.getElementById('status-message');
+            statusMessage.style.color = '#2dd4a4'; // Teal
+            statusMessage.textContent = 'Listing added! Redirecting...';
+            
+            // Redirect to listings page after 1 second to simulate loading
+            setTimeout(() => {
+                window.location.href = 'listings.html';
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

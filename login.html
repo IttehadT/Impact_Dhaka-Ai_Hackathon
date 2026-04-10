@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - NagorikHub</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* The wrapper takes up the full height of the screen (100vh) and centers its content */
+        .auth-wrapper {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6rem 2rem 2rem; /* Top padding ensures it clears the fixed navbar */
+            background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(232,160,32,0.05) 0%, transparent 80%);
+        }
+
+        /* The actual login box */
+        .auth-card {
+            width: 100%;
+            max-width: 420px;
+            background: rgba(26, 32, 53, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .auth-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .auth-header h2 {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+
+        .auth-header p {
+            font-size: 0.9rem;
+            color: rgba(232, 228, 220, 0.6);
+        }
+
+        /* Styling the form inputs to match the dark, modern theme */
+        .input-group {
+            margin-bottom: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .input-group label {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: rgba(232, 228, 220, 0.8);
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background: rgba(10, 14, 26, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 8px;
+            color: #fff;
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            transition: border-color 0.2s;
+            outline: none;
+        }
+
+        /* Highlight the border with amber when the user clicks to type */
+        .input-group input:focus {
+            border-color: var(--amber);
+        }
+
+        .auth-footer {
+            margin-top: 1.5rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: rgba(232, 228, 220, 0.6);
+        }
+
+        .auth-footer a {
+            color: var(--amber);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .auth-footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Reusing the large button style from the landing page, making it full width */
+        .btn-login {
+            width: 100%;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a class="nav-logo" href="index.html"><span>Nagorik</span>Hub</a>
+        <ul class="nav-links">
+            <li><a href="index.html#features">Features</a></li>
+            <li><a href="index.html#roadmap">Roadmap</a></li>
+            <li><a href="index.html#about">About</a></li>
+        </ul>
+        <div class="nav-actions">
+            <a href="login.html" class="btn-ghost">Login</a>
+            <a href="dashboard.html" class="btn-amber">Dashboard →</a>
+        </div>
+    </nav>
+
+    <div class="auth-wrapper">
+        <div class="auth-card reveal visible">
+            <div class="auth-header">
+                <h2>Welcome Back</h2>
+                <p>Sign in to access your saved listings and reports.</p>
+            </div>
+            
+            <form id="loginForm" action="dashboard.html">
+                <div class="input-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="citizen@dhaka.com" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="••••••••" required>
+                </div>
+                
+                <button type="submit" class="btn-large amber btn-login">Sign In</button>
+            </form>
+            
+            <div class="auth-footer">
+                Don't have an account? <a href="#">Sign up here</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

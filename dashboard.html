@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - NagorikHub</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* Main wrapper to push content below the fixed navbar and center it */
+        .dashboard-wrapper {
+            padding-top: 100px;
+            min-height: 100vh;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+            padding-bottom: 4rem;
+        }
+
+        /* Header section welcoming the user with a bottom border */
+        .dash-header {
+            margin-bottom: 3rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding-bottom: 1.5rem;
+        }
+
+        .dash-header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* CSS Grid to display quick statistics side-by-side. 
+           Auto-fit makes them stack on small screens automatically. */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        /* Styling for the individual data boxes (e.g., 'Saved Listings' counter) */
+        .stat-box {
+            background: rgba(26, 32, 53, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        /* The large numbers inside the stat boxes */
+        .stat-box .value {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--amber);
+            line-height: 1;
+        }
+
+        .stat-box .label {
+            font-size: 0.85rem;
+            color: rgba(232, 228, 220, 0.6);
+        }
+
+        /* Section titles for the lists below the stats */
+        .section-heading {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            color: #fff;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Grid for saved properties, reusing similar logic from listings.html */
+        .saved-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* A more horizontal, compact card design meant for list views */
+        .compact-card {
+            background: rgba(10, 14, 26, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 1.25rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: border-color 0.2s;
+        }
+
+        /* Subtle green glow on hover to indicate interactability */
+        .compact-card:hover {
+            border-color: rgba(26, 171, 122, 0.4);
+        }
+
+        .card-info h4 {
+            color: #fff;
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .card-info p {
+            color: rgba(232, 228, 220, 0.5);
+            font-size: 0.85rem;
+        }
+
+        /* A smaller button variant for the compact cards */
+        .btn-small {
+            padding: 0.4rem 0.9rem;
+            font-size: 0.8rem;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a class="nav-logo" href="index.html"><span>Nagorik</span>Hub</a>
+        <ul class="nav-links">
+            <li><a href="listings.html">Explore</a></li>
+            <li><a href="index.html#features">Features</a></li>
+        </ul>
+        <div class="nav-actions">
+            <a href="index.html" class="btn-ghost">Logout</a>
+        </div>
+    </nav>
+
+    <div class="dashboard-wrapper">
+        
+        <div class="dash-header">
+            <h1>Welcome back, Ittehad Ahmed Tausif</h1>
+            <p style="color: rgba(232,228,220,0.65);">Manage your saved properties and unlocked intelligence reports.</p>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-box">
+                <div class="value">3</div>
+                <div class="label">Saved Listings</div>
+            </div>
+            <div class="stat-box">
+                <div class="value">1</div>
+                <div class="label">Unlocked Deep Reports</div>
+            </div>
+            <div class="stat-box">
+                <div class="value">82</div>
+                <div class="label">Avg. Livability Score</div>
+            </div>
+        </div>
+
+        <h2 class="section-heading">My Saved Properties</h2>
+        <div class="saved-grid" style="margin-bottom: 3rem;">
+            
+            <div class="compact-card">
+                <div class="card-info">
+                    <h4>2BHK Apartment</h4>
+                    <p>Bashundhara R/A, Block C • ৳20,000/mo</p>
+                </div>
+                <a href="listings.html" class="btn-ghost btn-small">View</a>
+            </div>
+
+            <div class="compact-card">
+                <div class="card-info">
+                    <h4>Studio Flat</h4>
+                    <p>Banani, Road 11 • ৳18,000/mo</p>
+                </div>
+                <a href="listings.html" class="btn-ghost btn-small">View</a>
+            </div>
+            
+        </div>
+
+        <h2 class="section-heading">My Deep Reports</h2>
+        <div class="saved-grid">
+            
+            <div class="compact-card" style="border-color: rgba(232,160,32,0.2);">
+                <div class="card-info">
+                    <h4>3BHK Family Flat</h4>
+                    <p>Dhanmondi, Road 27 • Full Risk & Utility History</p>
+                </div>
+                <a href="#" class="btn-amber btn-small">Open Report</a>
+            </div>
+            
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="footer-bottom" style="border-top: none; padding-top: 0;">
+            <p>© 2026 NagorikHub. Built for Bangladesh's Rental Market.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

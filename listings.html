@@ -8,11 +8,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="style.css">
 
     <style>
-        /* Adds spacing below the fixed navbar so content isn't hidden behind it */
         .page-wrapper {
             padding-top: 100px;
             min-height: 100vh;
@@ -22,43 +20,28 @@
             padding-right: 2rem;
             padding-bottom: 4rem;
         }
-
-        .page-header {
-            margin-bottom: 3rem;
-        }
-
-        .page-header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        /* CSS Grid is perfect for card layouts. 
-          auto-fit and minmax ensure that as the screen shrinks, the cards 
-          stack automatically without needing complex media queries.
-        */
+        .page-header { margin-bottom: 3rem; }
+        .page-header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        
         .listings-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
         }
 
-        /* Styling for the individual property card */
         .property-card {
             background: rgba(26, 32, 53, 0.5);
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 12px;
             padding: 1.5rem;
             transition: all 0.3s ease;
-            position: relative;
         }
 
-        /* Hover effect to make the card feel interactive */
         .property-card:hover {
             border-color: rgba(232, 160, 32, 0.4);
             transform: translateY(-4px);
         }
 
-        /* Top row of the card containing badges (e.g., Livability score) */
         .card-header {
             display: flex;
             justify-content: space-between;
@@ -67,13 +50,14 @@
         }
 
         .score-badge {
-            background: rgba(26, 171, 122, 0.15);
-            color: #2dd4a4;
             padding: 0.4rem 0.8rem;
             border-radius: 999px;
             font-size: 0.85rem;
             font-weight: 700;
         }
+        .score-good { color: #2dd4a4; background: rgba(26, 171, 122, 0.15); }
+        .score-avg { color: #f5b942; background: rgba(232, 160, 32, 0.15); }
+        .score-poor { color: #f08070; background: rgba(224, 92, 58, 0.15); }
 
         .property-card h3 {
             font-family: var(--font-display);
@@ -89,7 +73,6 @@
             margin-bottom: 1.5rem;
         }
 
-        /* A simple grid to display utility features like gas and water neatly */
         .utility-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -107,7 +90,6 @@
             gap: 0.5rem;
         }
 
-        /* Full-width button at the bottom of the card */
         .btn-full {
             width: 100%;
             text-align: center;
@@ -120,13 +102,11 @@
     <nav>
         <a class="nav-logo" href="index.html"><span>Nagorik</span>Hub</a>
         <ul class="nav-links">
-            <li><a href="index.html#features">Features</a></li>
-            <li><a href="index.html#roadmap">Roadmap</a></li>
-            <li><a href="index.html#about">About</a></li>
+            <li><a href="add-listing.html">Add Listing</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
         </ul>
         <div class="nav-actions">
             <a href="login.html" class="btn-ghost">Login</a>
-            <a href="dashboard.html" class="btn-amber">Dashboard →</a>
         </div>
     </nav>
 
@@ -136,12 +116,30 @@
             <p style="color: rgba(232,228,220,0.65);">AI-scored properties with verified utility data.</p>
         </div>
 
-        <div class="listings-grid">
+        <div class="listings-grid" id="listings-container">
             
             <div class="property-card">
                 <div class="card-header">
                     <span class="tag amber">AI Verified</span>
-                    <div class="score-badge">Score: 82</div>
+                    <div class="score-badge score-good">Score: 95</div>
+                </div>
+                <h3>Luxury Condo</h3>
+                <p style="color: rgba(232,228,220,0.5); font-size: 0.9rem; margin-bottom: 0.5rem;">Gulshan 2, Avenue 8</p>
+                <div class="rent-price">৳85,000 <span style="font-size: 0.8rem; color: rgba(232,228,220,0.4); font-weight: 400;">/ mo</span></div>
+                
+                <div class="utility-grid">
+                    <div class="utility-item">🔥 Pipeline Gas</div>
+                    <div class="utility-item">💧 WASA + Filter</div>
+                    <div class="utility-item">⚡ 99% Uptime</div>
+                    <div class="utility-item">👨‍🏫 Tutor Score: 92</div>
+                </div>
+                <a href="#" class="btn-amber btn-full">View Deep Report</a>
+            </div>
+
+            <div class="property-card">
+                <div class="card-header">
+                    <span class="tag amber">AI Verified</span>
+                    <div class="score-badge score-good">Score: 82</div>
                 </div>
                 <h3>2BHK Apartment</h3>
                 <p style="color: rgba(232,228,220,0.5); font-size: 0.9rem; margin-bottom: 0.5rem;">Bashundhara R/A, Block C</p>
@@ -149,18 +147,17 @@
                 
                 <div class="utility-grid">
                     <div class="utility-item">🔥 Pipeline Gas</div>
-                    <div class="utility-item">💧 WASA Water</div>
+                    <div class="utility-item">💧 WASA</div>
                     <div class="utility-item">⚡ 90% Uptime</div>
                     <div class="utility-item">👨‍🏫 Tutor Score: 78</div>
                 </div>
-                
                 <a href="#" class="btn-amber btn-full">View Deep Report</a>
             </div>
 
             <div class="property-card">
                 <div class="card-header">
-                    <span class="tag amber">AI Verified</span>
-                    <div class="score-badge" style="color: #f5b942; background: rgba(232,160,32,0.15);">Score: 65</div>
+                    <span class="tag teal">Unverified</span>
+                    <div class="score-badge score-avg">Score: 65</div>
                 </div>
                 <h3>3BHK Family Flat</h3>
                 <p style="color: rgba(232,228,220,0.5); font-size: 0.9rem; margin-bottom: 0.5rem;">Dhanmondi, Road 27</p>
@@ -172,18 +169,29 @@
                     <div class="utility-item">⚡ 98% Uptime</div>
                     <div class="utility-item">👨‍🏫 Tutor Score: 85</div>
                 </div>
+                <a href="#" class="btn-amber btn-full">View Deep Report</a>
+            </div>
+
+            <div class="property-card">
+                <div class="card-header">
+                    <span class="tag teal">Unverified</span>
+                    <div class="score-badge score-poor">Score: 55</div>
+                </div>
+                <h3>Bachelor Mess Seat</h3>
+                <p style="color: rgba(232,228,220,0.5); font-size: 0.9rem; margin-bottom: 0.5rem;">Mirpur 10, Block D</p>
+                <div class="rent-price">৳6,000 <span style="font-size: 0.8rem; color: rgba(232,228,220,0.4); font-weight: 400;">/ mo</span></div>
                 
+                <div class="utility-grid">
+                    <div class="utility-item">🔥 Cylinder Gas</div>
+                    <div class="utility-item">💧 WASA</div>
+                    <div class="utility-item">⚡ 85% Uptime</div>
+                    <div class="utility-item">👨‍🏫 Tutor Score: 60</div>
+                </div>
                 <a href="#" class="btn-amber btn-full">View Deep Report</a>
             </div>
 
         </div>
     </div>
-
-    <footer>
-        <div class="footer-bottom" style="border-top: none; padding-top: 0;">
-            <p>© 2026 NagorikHub. Built for Bangladesh's Rental Market.</p>
-        </div>
-    </footer>
 
 </body>
 </html>
