@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+🚀 **Live Demo:** [https://ittehadt.github.io/nagorikhub-mvp/index.html](https://ittehadt.github.io/nagorikhub-mvp/index.html)
 
-## Getting Started
+---
 
-First, run the development server:
+# NagorikHub 🏙️
+**AI Rental & Living Intelligence Platform for Bangladesh**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+*“We use AI to turn fragmented housing data into trusted, actionable living intelligence.”*
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ⚠️ The Problem
+Every year, millions of Bangladeshis relocate for work, education, and family. Currently, making one of the biggest financial decisions of their lives relies on almost no reliable data. 
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Current rental platforms only show you photos and a price. They lack:
+* **Verified Utility Data:** No transparency on gas types (pipeline vs. cylinder), electricity load-shedding frequency, or water sources.
+* **Safety Insights:** No way to gauge if a neighborhood is safe for a tutor visiting at 9 PM or a professional returning from a late shift.
+* **Real Sentiment:** No community-driven reviews or data-backed risk analysis.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+**The Result:** Poor decisions, hidden costs, and compromised safety.
 
-## Learn More
+## 💡 The Solution
+**NagorikHub** transforms traditional rental listings into a full decision intelligence system. Instead of just showing properties, the platform acts as a community intelligence layer that provides verified utility insights, safety and livability scoring, and AI-generated area intelligence. 
 
-To learn more about Next.js, take a look at the following resources:
+Renting a home shouldn't be a leap of faith. NagorikHub ensures it is an informed decision backed by data.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## ✨ Key Features (MVP)
+* **Listing Intelligence:** Property cards featuring not just rent, but verified utility badges (Gas type, Water source, Electricity Uptime).
+* **Livability Score (Free):** A composite score dynamically generated using safety metrics, utility reliability, amenities, transport, and community reviews.
+* **Tutor Confidence Score (Free):** A unique metric designed specifically for tutors and home-visit workers, factoring in day/night safety, transport access, and area sentiment.
+* **Deep Report (Premium - ৳49):** Detailed risk breakdowns, 6-month rent predictions, and full historical utility data.
+* **AI Chatbot (RAG):** Context-aware AI assistant. Users can ask questions like *"Is this area safe for tutoring at night?"* and the system retrieves real review context and data to answer.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 👥 Target Users
+* **Primary:** Tenants (Students, young professionals, families) relocating within or to Dhaka.
+* **Secondary:** Tutors, freelancers, and shift workers who need hyper-specific safety and transport data.
+* **Tertiary:** Verified Landlords and Brokers seeking to attract tenants by providing transparent data.
 
-## Deploy on Vercel
+## 🛠️ Tech Stack (Current MVP Prototype)
+This repository contains the functional, high-fidelity frontend MVP designed for rapid iteration and demonstration.
+* **Frontend:** HTML5, CSS3 (Vanilla / Custom variables), JavaScript (Vanilla)
+* **Design System:** Custom CSS Grid & Flexbox layouts, Google Fonts (Syne, DM Sans)
+* **Deployment:** GitHub Pages
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+*Note: The platform is designed to scale into a Next.js + Supabase + Python (FastAPI) microservice architecture for production, handling the RAG vector database and LLM integrations.*
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🚀 How to Run Locally
+Since this MVP is built with pure HTML/CSS/JS, no complex build steps or node modules are required!
+
+1. Clone the repository:
+   ```bash
+   git clone [https://github.com/ittehadt/nagorikhub-mvp.git](https://github.com/ittehadt/nagorikhub-mvp.git)
